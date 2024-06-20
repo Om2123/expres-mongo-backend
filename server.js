@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const User = require('./models/User'); // Import the User model
@@ -11,7 +12,7 @@ app.use(express.json());
 // Middleware to enable CORS
 app.use(cors());
 // MongoDB connection
-const dbURI = 'mongodb+srv://dew669035:6BY9ADx21wEIrcZ1@diglart.dhzttxg.mongodb.net/?retryWrites=true&w=majority&appName=diglart';
+const dbURI = process.env.DBURL
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch((error) => console.log('Failed to connect to MongoDB', error));
